@@ -1,22 +1,15 @@
-# ContextOS
+ ContextOS
 
 ```markdown
-# Agent Context OS
+Agent Context OS
 
 Agent Context OS is a local-first Python SDK for turning documents and text into semantic graphs, retrieving graph-aware context, optimizing token usage, and sending compact prompts to OpenAI, FastRouter, or a local mock model.
 
 It is built for developers creating AI agents that need structured memory, transparent context selection, and replayable prompt decisions.
 
-## Why Agent Context OS?
+ Why Agent Context OS?
 
 Most agent systems pass large chunks of raw text into prompts. That gets expensive, noisy, and hard to debug.
-
-Agent Context OS extracts semantic facts like:
-
-```text
-OrbitGuard -> uses -> CelesTrak
-OrbitGuard -> uses -> LSTM
-```
 
 Then, when a user asks a question, it retrieves only the most relevant graph facts and document chunks, compiles an optimized prompt, and records exactly what context was kept or ignored.
 
