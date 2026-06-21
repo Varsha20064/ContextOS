@@ -1,333 +1,444 @@
-# Agent Context OS
+# 🚀 ContextOS Proxy
+### The Operating Layer for AI Context
 
-Agent Context OS is a local-first Python SDK for turning documents and text into semantic graphs, retrieving graph-aware context, optimizing token usage, and sending compact prompts to OpenAI, FastRouter, or a local mock model.
+> **Smarter Context. Lower Cost. Better AI.**
 
-It is built for developers creating AI agents that need structured memory, transparent context selection, and replayable prompt decisions.
+ContextOS Proxy is an **OpenAI-compatible semantic context gateway** that sits transparently between AI applications and Large Language Models (LLMs).
 
-## Why Agent Context OS?
+Instead of sending raw documents directly to an LLM, ContextOS Proxy intercepts every request, retrieves relevant knowledge from a semantic graph, optimizes the context, intelligently routes the request to the best model, and returns a fully OpenAI-compatible response.
 
-Most agent systems pass large chunks of raw text into prompts. That gets expensive, noisy, and hard to debug.
+No changes to application logic.
+Simply replace your API endpoint.
 
-Agent Context OS extracts semantic facts like:
+---
+
+## 📖 Why ContextOS?
+
+The biggest challenge in AI today isn't the model.
+
+It's the **context**.
+
+Modern AI applications retrieve thousands of tokens from documents, repositories, Slack conversations, APIs, and databases—even when only a few facts are actually needed.
+
+This leads to:
+
+- 💸 High inference costs
+- 🐢 Slow responses
+- 🤯 Hallucinations
+- 📚 Irrelevant context
+- 🔍 Poor explainability
+- 🔧 Complex prompt engineering
+
+ContextOS Proxy solves this by making **context intelligent** before it reaches the model.
+
+---
+
+# ⚡ How It Works
 
 ```text
-OrbitGuard -> uses -> CelesTrak
-OrbitGuard -> uses -> LSTM
+Application
+      │
+      ▼
+ContextOS Proxy
+      │
+      ▼
+Prompt Interceptor
+      │
+      ▼
+Semantic Graph Engine
+      │
+      ▼
+Context Optimizer
+      │
+      ▼
+Prompt Compiler
+      │
+      ▼
+Model Router
+      │
+      ▼
+OpenAI / FastRouter / Claude / Gemini
+      │
+      ▼
+Optimized Response
 ```
 
-Then, when a user asks a question, it retrieves only the most relevant graph facts and document chunks, compiles an optimized prompt, and records exactly what context was kept or ignored.
+---
 
-## Features
+# ✨ Features
 
-- Local semantic graph builder
-- Entity-relation triple extraction
-- NetworkX graph storage
-- OpenAI extraction and completion support
-- FastRouter support through OpenAI-compatible API style
-- Offline mock mode with no API keys required
-- Graph-aware context retrieval
-- Token budget optimization
-- Duplicate sentence removal
-- Structured prompt compiler
-- Agent replay and context diff
-- CLI command: `contextos`
-- JSON export for graph, memory, and replay data
-- GitHub-ready package structure
+## 🧠 Semantic Knowledge Graph
 
-## Installation
+Convert documents into structured knowledge.
 
-Clone the project and install it locally:
+Instead of
+
+```
+OrbitGuard uses CelesTrak.
+OrbitGuard uses LSTM.
+```
+
+ContextOS stores
+
+```
+OrbitGuard
+    │
+    ├── uses ───────► CelesTrak
+    ├── model ──────► LSTM
+    └── predicts ───► Collision Risk
+```
+
+Retrieval happens over relationships—not raw text.
+
+---
+
+## ⚡ Context Optimization
+
+Before an LLM receives a prompt, ContextOS:
+
+- removes duplicate context
+- ranks relevance
+- compresses information
+- respects token budgets
+- calculates token savings
+
+Result:
+
+- lower cost
+- lower latency
+- better responses
+
+---
+
+## 🔀 Intelligent Model Routing
+
+Automatically select the best model.
+
+```
+Simple Summary
+        │
+        ▼
+GPT-4.1 Mini
+
+Reasoning
+        │
+        ▼
+GPT-4.1
+
+Coding
+        │
+        ▼
+Claude
+
+Low-cost Tasks
+        │
+        ▼
+FastRouter
+```
+
+Developers simply use
+
+```python
+model="auto"
+```
+
+---
+
+## 🔍 Semantic Retrieval
+
+Traditional RAG retrieves text.
+
+ContextOS retrieves knowledge.
+
+Instead of
+
+```
+20 pages of documentation
+```
+
+the model receives
+
+```
+Authentication Service
+
+↓
+
+uses OAuth
+
+↓
+
+depends on Redis
+
+↓
+
+calls User Database
+```
+
+---
+
+## 📊 Token Analytics
+
+Every request returns
+
+- Original Tokens
+- Optimized Tokens
+- Compression Ratio
+- Estimated Cost Savings
+- Model Used
+
+---
+
+## 🎥 Replay & Observability
+
+Replay every request.
+
+See
+
+- Original Prompt
+- Optimized Prompt
+- Retrieved Graph Facts
+- Model Selected
+- Tokens Saved
+- Final Response
+
+Perfect for debugging AI systems.
+
+---
+
+# 🚀 Installation
 
 ```bash
-git clone https://github.com/your-username/agent-context-os.git
-cd agent-context-os
+git clone https://github.com/<username>/contextos-proxy
+
+cd contextos-proxy
+
 pip install -e .
 ```
 
-For development and tests:
+---
 
-```bash
-pip install -e ".[dev]"
-pytest tests
+# 🔑 Environment
+
+Create
+
+```
+.env
 ```
 
-## Quickstart
-
-```python
-from agent_context_os import ContextOS
-
-ctx = ContextOS(provider="mock")
-
-ctx.add_text(
-    "OrbitGuard uses CelesTrak and LSTM for satellite collision prediction."
-)
-
-result = ctx.ask("Explain OrbitGuard architecture")
-
-print(result.answer)
-print(result.semantic_graph)
-print(result.tokens_saved_percent)
 ```
-
-Example output includes:
-
-```text
-OrbitGuard -> uses -> CelesTrak
-OrbitGuard -> uses -> LSTM
-```
-
-## Using OpenAI
-
-Set your API key:
-
-```bash
-export OPENAI_API_KEY="your-key"
-```
-
-Windows PowerShell:
-
-```powershell
-$env:OPENAI_API_KEY="your-key"
-```
-
-Then:
-
-```python
-from agent_context_os import ContextOS
-
-ctx = ContextOS(provider="openai")
-ctx.add_text("Agent Context OS converts documents into semantic graphs.")
-result = ctx.ask("What does Agent Context OS do?")
-
-print(result.answer)
-```
-
-The SDK uses the official `openai` Python package.
-
-## Using FastRouter
-
-Set your FastRouter environment variables:
-
-```bash
-export FASTROUTER_API_KEY="your-key"
-export FASTROUTER_BASE_URL="https://api.fastrouter.ai/v1"
-```
-
-Windows PowerShell:
-
-```powershell
-$env:FASTROUTER_API_KEY="your-key"
-$env:FASTROUTER_BASE_URL="https://api.fastrouter.ai/v1"
-```
-
-Then:
-
-```python
-from agent_context_os import ContextOS
-
-ctx = ContextOS(provider="fastrouter")
-ctx.add_text("OrbitGuard uses CelesTrak and LSTM.")
-result = ctx.ask("Explain the architecture")
-
-print(result.answer)
-```
-
-## Local Mock Mode
-
-Mock mode works without API keys:
-
-```python
-ctx = ContextOS(provider="mock")
-```
-
-Use mock mode for:
-
-- Local development
-- Tests
-- Demos
-- Offline prototyping
-- CI pipelines
-
-## CLI Usage
-
-After installation, use the `contextos` CLI:
-
-```bash
-contextos add path/to/file.txt
-contextos ask "What is this project about?"
-contextos graph
-contextos replay
-contextos export
-```
-
-You can select a provider:
-
-```bash
-contextos ask "Explain this project" --provider mock
-contextos ask "Explain this project" --provider openai
-contextos ask "Explain this project" --provider fastrouter
-```
-
-## Exporting Data
-
-Export graph, memory, and replay data:
-
-```python
-ctx.export("contextos_export")
-```
-
-This creates:
-
-```text
-contextos_export/
-├── semantic_graph.json
-├── memory.json
-└── replay.json
-```
-
-## Agent Replay
-
-Every `ctx.ask()` creates a replay object with:
-
-- Query ID
-- Original token count
-- Optimized token count
-- Tokens saved percent
-- Semantic facts retained
-- Chunks retained
-- Removed or ignored context summary
-- Final prompt sent to the model
-- Provider and model selected
-- Timestamp
-- Step-by-step timeline
-
-Example:
-
-```python
-result = ctx.ask("Explain OrbitGuard architecture")
-
-replay = ctx.get_replay(result.query_id)
-print(replay.final_prompt)
-print(replay.timeline)
-
-all_replays = ctx.list_replays()
-```
-
-## Architecture
-
-```text
-Documents / Text
-      |
-      v
-SemanticExtractor
-      |
-      |-- OpenAI extraction when OPENAI_API_KEY exists
-      |-- FastRouter extraction when FASTROUTER_API_KEY exists
-      |-- Mock extraction fallback
-      v
-GraphStore
-NetworkX MultiDiGraph
-      |
-      +-------------------+
-      |                   |
-      v                   v
-Semantic Facts       Document Chunks
-      |                   |
-      +---------+---------+
-                |
-                v
-        ContextOptimizer
-                |
-                v
-        PromptCompiler
-                |
-                v
-        ModelRouter
-      /     |       \
- OpenAI FastRouter Mock
-                |
-                v
-        AskResult + Replay
-```
-
-## Token Optimization
-
-Agent Context OS compares the full local memory against the optimized context used for the final model call.
-
-Each result includes:
-
-```python
-result.original_tokens
-result.optimized_tokens
-result.tokens_saved_percent
-```
-
-The optimizer:
-
-- Searches graph facts
-- Searches document chunks
-- Keeps relevant context
-- Removes duplicate sentences
-- Respects a token budget
-- Summarizes ignored context in replay metadata
-
-## Examples
-
-Run examples from the project root:
-
-```bash
-python examples/quickstart.py
-python examples/openai_example.py
-python examples/fastrouter_example.py
-```
-
-## Package Structure
-
-```text
-agent-context-os/
-├── agent_context_os/
-│   ├── core.py
-│   ├── models.py
-│   ├── extractor.py
-│   ├── graph_store.py
-│   ├── context_optimizer.py
-│   ├── prompt_compiler.py
-│   ├── router.py
-│   ├── replay.py
-│   ├── tokenizer.py
-│   ├── cli.py
-│   └── llms/
-├── examples/
-├── tests/
-├── README.md
-├── pyproject.toml
-├── .env.example
-├── LICENSE
-└── .gitignore
-```
-
-## Environment Variables
-
-```env
 OPENAI_API_KEY=
-OPENAI_MODEL=gpt-4o-mini
 
 FASTROUTER_API_KEY=
-FASTROUTER_BASE_URL=https://api.fastrouter.ai/v1
-FASTROUTER_MODEL=openai/gpt-4o-mini
+
+DEFAULT_PROVIDER=openai
+
+TOKEN_BUDGET=4000
 ```
 
-## Testing
+---
+
+# ▶️ Running the Proxy
 
 ```bash
-pytest tests
+uvicorn contextos_proxy.server:app --host 0.0.0.0 --port 8787
 ```
 
-## License
+The proxy now behaves like an OpenAI endpoint.
+
+---
+
+# 💻 Usage
+
+Instead of
+
+```python
+from openai import OpenAI
+
+client = OpenAI(api_key="OPENAI_KEY")
+```
+
+use
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="contextos-local",
+    base_url="http://localhost:8787/v1"
+)
+
+response = client.chat.completions.create(
+    model="auto",
+    messages=[
+        {
+            "role":"user",
+            "content":"Explain OrbitGuard architecture"
+        }
+    ]
+)
+```
+
+No other code changes are required.
+
+---
+
+# 📂 Ingest Knowledge
+
+```bash
+contextos-proxy ingest docs/
+```
+
+or
+
+```bash
+POST /v1/context/ingest
+```
+
+ContextOS automatically
+
+- extracts entities
+- builds relationships
+- creates semantic graph
+- indexes knowledge
+
+---
+
+# 📡 API
+
+### Chat Completion
+
+```
+POST /v1/chat/completions
+```
+
+OpenAI-compatible.
+
+---
+
+### Ingest Context
+
+```
+POST /v1/context/ingest
+```
+
+---
+
+### Graph
+
+```
+GET /v1/graph
+```
+
+---
+
+### Replay
+
+```
+GET /v1/replay/{id}
+```
+
+---
+
+### Stats
+
+```
+GET /v1/stats
+```
+
+---
+
+# 🏗 Project Structure
+
+```
+contextos-proxy/
+
+├── contextos_proxy/
+│
+├── semantic_graph.py
+├── context_optimizer.py
+├── prompt_compiler.py
+├── router.py
+├── replay.py
+├── providers/
+├── storage/
+│
+├── examples/
+│
+├── tests/
+│
+└── README.md
+```
+
+---
+
+# 🎯 Use Cases
+
+✅ Enterprise AI Copilots
+
+✅ Coding Assistants
+
+✅ IDE Extensions
+
+✅ Customer Support AI
+
+✅ Internal Knowledge Bases
+
+✅ Autonomous Agents
+
+✅ Multi-Agent Systems
+
+✅ RAG Applications
+
+---
+
+# 📈 Why ContextOS?
+
+| Traditional RAG | ContextOS Proxy |
+|-----------------|-----------------|
+| Retrieves document chunks | Retrieves semantic relationships |
+| Large prompts | Optimized prompts |
+| Manual prompt engineering | Automatic prompt compilation |
+| Static retrieval | Context-aware retrieval |
+| Single model | Intelligent model routing |
+| No replay | Full observability |
+| High token cost | Cost-aware optimization |
+
+---
+
+# 🛣 Roadmap
+
+- Multi-agent orchestration
+- Distributed semantic graphs
+- Enterprise connectors
+- Policy engine
+- Context caching
+- Hybrid graph + vector retrieval
+- Local LLM support
+- Kubernetes deployment
+- AI Context Operating System
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome!
+
+Please open an issue or submit a pull request.
+
+---
+
+# 📜 License
 
 MIT License
 
-## Author
+---
 
-Created by **D Varsha** **Hemanth A N**.
-```
+# 🌍 Vision
+
+The future of AI isn't about building bigger models.
+
+It's about giving models the right knowledge at the right time.
+
+ContextOS Proxy is building the infrastructure that every future AI application will rely on.
+
+**Instead of making models smarter, we make context smarter.**
