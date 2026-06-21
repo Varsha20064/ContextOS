@@ -344,11 +344,14 @@ contextos/
 
 ## 🌐 Live Demo
 
-> https://drive.google.com/file/d/1QgjihifZOrAZekcayVSvoX-N0OVc46Fa/view?usp=sharing
+> [![Watch the Video](<img width="1092" height="592" alt="image" src="https://github.com/user-attachments/assets/631d6683-f688-484c-97aa-6e16b35a71c7" />
+)](https://drive.google.com/file/d/1QgjihifZOrAZekcayVSvoX-N0OVc46Fa/view?usp=sharing)
+
 
 ## 📑 Presentation
 
 > https://gamma.app/docs/The-Operating-System-for-AI-Knowledge-yhf3374dgfsr00t
+
 
 <img width="1600" height="723" alt="image" src="https://github.com/user-attachments/assets/58b85710-9699-4cca-b0cc-e447ded1c67a" />
 <img width="1226" height="911" alt="image" src="https://github.com/user-attachments/assets/7cd5eb5b-6045-4490-84fd-a727f1cbc05d" />
