@@ -10,6 +10,8 @@ Instead of sending raw documents directly to an LLM, ContextOS Proxy intercepts 
 No changes to application logic.
 Simply replace your API endpoint.
 
+<img width="1600" height="723" alt="image" src="https://github.com/user-attachments/assets/e7010b9f-006e-41cf-a5b7-ed69d31289a9" />
+
 ---
 
 ## 📖 Why ContextOS?
@@ -62,10 +64,13 @@ OpenAI / FastRouter / Claude / Gemini
       ▼
 Optimized Response
 ```
+<img width="1226" height="911" alt="image" src="https://github.com/user-attachments/assets/e4893a9a-0344-49f3-a3fc-9ae001e938a6" />
 
 ---
 
 # ✨ Features
+
+<img width="1600" height="703" alt="image" src="https://github.com/user-attachments/assets/89e2a720-0c29-4a0d-af65-8fa09f6421c9" />
 
 ## 🧠 Semantic Knowledge Graph
 
