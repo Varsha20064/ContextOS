@@ -1,228 +1,164 @@
-# 🚀 ContextOS Proxy
-### The Operating Layer for AI Context
+# 🚀 ContextOS
+### The Operating System for AI Knowledge
 
 > **Smarter Context. Lower Cost. Better AI.**
 
-ContextOS Proxy is an **OpenAI-compatible semantic context gateway** that sits transparently between AI applications and Large Language Models (LLMs).
-
-Instead of sending raw documents directly to an LLM, ContextOS Proxy intercepts every request, retrieves relevant knowledge from a semantic graph, optimizes the context, intelligently routes the request to the best model, and returns a fully OpenAI-compatible response.
-
-No changes to application logic.
-Simply replace your API endpoint.
-
-<img width="1600" height="723" alt="image" src="https://github.com/user-attachments/assets/e7010b9f-006e-41cf-a5b7-ed69d31289a9" />
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)]()
+[![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green.svg)]()
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)]()
 
 ---
 
-## 📖 Why ContextOS?
+# 🌟 Overview
 
-The biggest challenge in AI today isn't the model.
+Large Language Models are no longer the bottleneck.
 
-It's the **context**.
+**Context is.**
 
-Modern AI applications retrieve thousands of tokens from documents, repositories, Slack conversations, APIs, and databases—even when only a few facts are actually needed.
+Modern AI applications spend enormous amounts of tokens processing documents, repositories, conversations, APIs, and enterprise knowledge before they can answer a single question.
 
-This leads to:
+This results in:
 
 - 💸 High inference costs
 - 🐢 Slow responses
 - 🤯 Hallucinations
-- 📚 Irrelevant context
-- 🔍 Poor explainability
+- 📚 Irrelevant context retrieval
 - 🔧 Complex prompt engineering
+- ❌ Poor explainability
 
-ContextOS Proxy solves this by making **context intelligent** before it reaches the model.
+**ContextOS** solves this by becoming the intelligence layer between enterprise knowledge and AI models.
+
+Instead of sending raw documents directly to an LLM, ContextOS transforms enterprise knowledge into a **Semantic Knowledge Graph**, retrieves only the most relevant connected information, optimizes the context, compiles efficient prompts, and intelligently routes requests to the most appropriate language model.
 
 ---
 
-# ⚡ How It Works
+# 🎯 Problem Statement
+
+Today's AI systems retrieve large chunks of unstructured text and send them directly to LLMs.
+
+As organizations accumulate documentation, repositories, APIs, tickets, and conversations, AI systems become increasingly expensive, slower, and less reliable.
+
+Developers spend significant time tuning prompts, retrieval pipelines, and model selection instead of building products.
+
+There is currently no dedicated infrastructure layer responsible for managing context before it reaches an LLM.
+
+---
+
+# 💡 Our Solution
+
+ContextOS is an **OpenAI-compatible context orchestration layer**.
+
+It sits transparently between applications and language models.
+
+Instead of treating information as plain text, ContextOS converts enterprise knowledge into a semantic graph of entities and relationships.
+
+Every request is intercepted, enriched with relevant graph-based knowledge, optimized for token efficiency, routed to the best model, and returned as a standard OpenAI-compatible response.
+
+Developers only change their API endpoint—no application logic needs to change.
+
+---
+
+# ✨ Key Features
+
+- 🧠 Semantic Knowledge Graph Construction
+- 🔍 Graph-based Context Retrieval
+- ⚡ Context Optimization & Token Compression
+- 📝 Intelligent Prompt Compilation
+- 🔀 Automatic Model Routing
+- 📊 Token & Cost Analytics
+- 🔁 Request Replay & Observability
+- 🔒 Enterprise-ready AI Middleware
+- 🔌 OpenAI-Compatible API
+- 💻 Local-first Deployment
+
+---
+
+# 🏗 Architecture
 
 ```text
-Application
-      │
-      ▼
-ContextOS Proxy
-      │
-      ▼
-Prompt Interceptor
-      │
-      ▼
-Semantic Graph Engine
-      │
-      ▼
-Context Optimizer
-      │
-      ▼
-Prompt Compiler
-      │
-      ▼
-Model Router
-      │
-      ▼
-OpenAI / FastRouter / Claude / Gemini
-      │
-      ▼
-Optimized Response
-```
-<img width="1226" height="911" alt="image" src="https://github.com/user-attachments/assets/e4893a9a-0344-49f3-a3fc-9ae001e938a6" />
+                Enterprise Knowledge
 
----
+      Documents | Code | APIs | Slack | Wiki
 
-# ✨ Features
+                     │
 
-<img width="1600" height="703" alt="image" src="https://github.com/user-attachments/assets/89e2a720-0c29-4a0d-af65-8fa09f6421c9" />
+                     ▼
 
-## 🧠 Semantic Knowledge Graph
+           ContextOS Proxy Layer
 
-Convert documents into structured knowledge.
+ ┌──────────────────────────────────────┐
+ │ Prompt Interceptor                   │
+ │ Semantic Knowledge Graph             │
+ │ Context Optimizer                    │
+ │ Prompt Compiler                      │
+ │ Intelligent Model Router             │
+ │ Replay & Analytics                   │
+ └──────────────────────────────────────┘
 
-Instead of
+                     │
 
-```
-OrbitGuard uses CelesTrak.
-OrbitGuard uses LSTM.
-```
+                     ▼
 
-ContextOS stores
+      OpenAI • FastRouter • Claude • Gemini
 
-```
-OrbitGuard
-    │
-    ├── uses ───────► CelesTrak
-    ├── model ──────► LSTM
-    └── predicts ───► Collision Risk
-```
+                     │
 
-Retrieval happens over relationships—not raw text.
+                     ▼
 
----
-
-## ⚡ Context Optimization
-
-Before an LLM receives a prompt, ContextOS:
-
-- removes duplicate context
-- ranks relevance
-- compresses information
-- respects token budgets
-- calculates token savings
-
-Result:
-
-- lower cost
-- lower latency
-- better responses
-
----
-
-## 🔀 Intelligent Model Routing
-
-Automatically select the best model.
-
-```
-Simple Summary
-        │
-        ▼
-GPT-4.1 Mini
-
-Reasoning
-        │
-        ▼
-GPT-4.1
-
-Coding
-        │
-        ▼
-Claude
-
-Low-cost Tasks
-        │
-        ▼
-FastRouter
-```
-
-Developers simply use
-
-```python
-model="auto"
+            Optimized AI Response
 ```
 
 ---
 
-## 🔍 Semantic Retrieval
+# ⚙ Technology Stack
 
-Traditional RAG retrieves text.
+### Backend
 
-ContextOS retrieves knowledge.
+- Python
+- FastAPI
+- Uvicorn
 
-Instead of
+### AI & LLM
 
-```
-20 pages of documentation
-```
+- OpenAI API
+- FastRouter
+- OpenAI-compatible APIs
 
-the model receives
+### Knowledge Layer
 
-```
-Authentication Service
+- Semantic Knowledge Graphs
+- Entity & Relationship Extraction
+- Graph Traversal
+- Context Optimization
 
-↓
+### Storage
 
-uses OAuth
+- NetworkX
+- JSON Graph Storage
 
-↓
+### Future Support
 
-depends on Redis
-
-↓
-
-calls User Database
-```
-
----
-
-## 📊 Token Analytics
-
-Every request returns
-
-- Original Tokens
-- Optimized Tokens
-- Compression Ratio
-- Estimated Cost Savings
-- Model Used
-
----
-
-## 🎥 Replay & Observability
-
-Replay every request.
-
-See
-
-- Original Prompt
-- Optimized Prompt
-- Retrieved Graph Facts
-- Model Selected
-- Tokens Saved
-- Final Response
-
-Perfect for debugging AI systems.
+- Neo4j
+- Memgraph
+- PostgreSQL
 
 ---
 
 # 🚀 Installation
 
+Clone the repository
+
 ```bash
-git clone https://github.com/<username>/contextos-proxy
+git clone https://github.com/<username>/contextos.git
 
-cd contextos-proxy
-
-pip install -e .
+cd contextos
 ```
 
----
+Install dependencies
 
-# 🔑 Environment
+```bash
+pip install -e .
+```
 
 Create
 
@@ -230,39 +166,39 @@ Create
 .env
 ```
 
+Add
+
 ```
 OPENAI_API_KEY=
 
 FASTROUTER_API_KEY=
 
-DEFAULT_PROVIDER=openai
-
 TOKEN_BUDGET=4000
+
+DEFAULT_PROVIDER=openai
 ```
 
----
-
-# ▶️ Running the Proxy
+Run
 
 ```bash
-uvicorn contextos_proxy.server:app --host 0.0.0.0 --port 8787
+uvicorn contextos.server:app --reload
 ```
-
-The proxy now behaves like an OpenAI endpoint.
 
 ---
 
 # 💻 Usage
 
-Instead of
+Existing OpenAI code
 
 ```python
 from openai import OpenAI
 
-client = OpenAI(api_key="OPENAI_KEY")
+client = OpenAI(
+    api_key="YOUR_KEY"
+)
 ```
 
-use
+Using ContextOS
 
 ```python
 from openai import OpenAI
@@ -277,38 +213,17 @@ response = client.chat.completions.create(
     messages=[
         {
             "role":"user",
-            "content":"Explain OrbitGuard architecture"
+            "content":"Explain the authentication architecture"
         }
     ]
 )
 ```
 
-No other code changes are required.
+No other code changes required.
 
 ---
 
-# 📂 Ingest Knowledge
-
-```bash
-contextos-proxy ingest docs/
-```
-
-or
-
-```bash
-POST /v1/context/ingest
-```
-
-ContextOS automatically
-
-- extracts entities
-- builds relationships
-- creates semantic graph
-- indexes knowledge
-
----
-
-# 📡 API
+# 📡 API Endpoints
 
 ### Chat Completion
 
@@ -316,7 +231,7 @@ ContextOS automatically
 POST /v1/chat/completions
 ```
 
-OpenAI-compatible.
+OpenAI-compatible endpoint.
 
 ---
 
@@ -326,6 +241,8 @@ OpenAI-compatible.
 POST /v1/context/ingest
 ```
 
+Upload enterprise knowledge.
+
 ---
 
 ### Graph
@@ -334,92 +251,145 @@ POST /v1/context/ingest
 GET /v1/graph
 ```
 
+Retrieve semantic graph.
+
 ---
 
 ### Replay
 
 ```
-GET /v1/replay/{id}
+GET /v1/replay/{request_id}
 ```
+
+Inspect request execution.
 
 ---
 
-### Stats
+### Statistics
 
 ```
 GET /v1/stats
 ```
 
+View optimization metrics.
+
 ---
 
-# 🏗 Project Structure
+# 📈 Example Optimization
+
+Without ContextOS
 
 ```
-contextos-proxy/
+18,200 tokens
 
-├── contextos_proxy/
-│
-├── semantic_graph.py
-├── context_optimizer.py
-├── prompt_compiler.py
-├── router.py
-├── replay.py
-├── providers/
+↓
+
+OpenAI
+```
+
+With ContextOS
+
+```
+18,200 tokens
+
+↓
+
+Semantic Graph
+
+↓
+
+Relevant Facts
+
+↓
+
+3,600 tokens
+
+↓
+
+OpenAI
+```
+
+Results
+
+- 80% Token Reduction
+- Lower Inference Cost
+- Faster Responses
+- Better Context
+- Reduced Hallucinations
+
+---
+
+# 📂 Project Structure
+
+```
+contextos/
+
+├── proxy/
+├── semantic_graph/
+├── optimizer/
+├── router/
+├── replay/
 ├── storage/
-│
+├── providers/
 ├── examples/
-│
 ├── tests/
-│
-└── README.md
+├── docs/
+├── README.md
+└── pyproject.toml
 ```
 
 ---
 
-# 🎯 Use Cases
+# 🎥 Product Demo
 
-✅ Enterprise AI Copilots
+## 🌐 Live Demo
 
-✅ Coding Assistants
+> https://your-demo-link.com
 
-✅ IDE Extensions
+## 🎥 Demo Video
 
-✅ Customer Support AI
+> https://youtube.com/your-demo
 
-✅ Internal Knowledge Bases
+## 📑 Presentation
 
-✅ Autonomous Agents
+> https://gamma.app/your-presentation
 
-✅ Multi-Agent Systems
-
-✅ RAG Applications
+*(Replace these with your actual links before submission.)*
 
 ---
 
-# 📈 Why ContextOS?
+# 🎯 Target Users
 
-| Traditional RAG | ContextOS Proxy |
-|-----------------|-----------------|
-| Retrieves document chunks | Retrieves semantic relationships |
-| Large prompts | Optimized prompts |
-| Manual prompt engineering | Automatic prompt compilation |
-| Static retrieval | Context-aware retrieval |
-| Single model | Intelligent model routing |
-| No replay | Full observability |
-| High token cost | Cost-aware optimization |
+- Enterprise AI Teams
+- AI Startups
+- SaaS Companies
+- AI Copilot Developers
+- Coding Assistant Platforms
+- Customer Support AI
+- Multi-Agent Systems
+- Internal Knowledge Platforms
 
 ---
 
 # 🛣 Roadmap
 
-- Multi-agent orchestration
-- Distributed semantic graphs
-- Enterprise connectors
-- Policy engine
-- Context caching
-- Hybrid graph + vector retrieval
-- Local LLM support
-- Kubernetes deployment
+### Phase 1
+
+- Semantic Graph Engine
+- Context Optimizer
+- OpenAI Proxy
+
+### Phase 2
+
+- Enterprise Connectors
+- Context Replay
+- Multi-model Routing
+
+### Phase 3
+
+- Distributed Semantic Graphs
+- Policy Engine
+- Context Cache
 - AI Context Operating System
 
 ---
@@ -440,10 +410,10 @@ MIT License
 
 # 🌍 Vision
 
-The future of AI isn't about building bigger models.
+Every AI application will eventually require intelligent context management.
 
-It's about giving models the right knowledge at the right time.
+Just as operating systems abstracted hardware complexity for software, **ContextOS abstracts context complexity for AI.**
 
-ContextOS Proxy is building the infrastructure that every future AI application will rely on.
+Instead of making models smarter, we make **context smarter**.
 
-**Instead of making models smarter, we make context smarter.**
+**ContextOS is building the infrastructure layer that powers the next generation of AI applications.**
