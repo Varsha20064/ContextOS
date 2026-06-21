@@ -346,15 +346,16 @@ contextos/
 
 > https://your-demo-link.com
 
-## 🎥 Demo Video
-
-> https://youtube.com/your-demo
-
 ## 📑 Presentation
 
-> https://gamma.app/your-presentation
+> https://gamma.app/docs/The-Operating-System-for-AI-Knowledge-yhf3374dgfsr00t
 
 *(Replace these with your actual links before submission.)*
+
+<img width="1600" height="723" alt="image" src="https://github.com/user-attachments/assets/58b85710-9699-4cca-b0cc-e447ded1c67a" />
+<img width="1226" height="911" alt="image" src="https://github.com/user-attachments/assets/7cd5eb5b-6045-4490-84fd-a727f1cbc05d" />
+<img width="1226" height="911" alt="image" src="https://github.com/user-attachments/assets/8e75b2ed-f564-4810-9bc5-4bef27ec5570" />
+<img width="1600" height="703" alt="image" src="https://github.com/user-attachments/assets/f6f4c9ac-a497-4570-af52-731909418a72" />
 
 ---
 
